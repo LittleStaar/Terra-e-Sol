@@ -1,0 +1,87 @@
+/*
+Atividade 
+Prof: Eduardo Hernandes
+Dupla: Aline Kettylen e Suellayne Silva
+Turma: 3E (II)
+*/
+
+body {
+    margin: 0; /* margem = 0*/
+    height: 100vh; /* altura = 100 ("vh" = é 1/100 da altura da janela.*/
+    display: flex;  /* exibição flexível*/
+    align-items: center; /* alinhar os itens (sol, lua, terra etc) no centro */
+    justify-content: center; /* conteúdo justificado no centro*/
+    background-color: black; /* cor de fundo = preto*/
+    overflow: hidden; /* overflow meio que limita a área onde as coisas vão aparece, mantendo o resto invísivel (hidden)*/
+}
+.container {
+    font-size: 10px; /* define tamanho da fonte/letra = 10 pixels*/
+    width: 40em; /*largura = 40x10, "em" serve para que o tamanho dos itens/fonte seja proporcional independentemente do tam. da tela*/
+    height: 40em; /*altura = 40x10, "em" serve para que o tamanho dos itens/fonte seja proporcional independentemente do tam. da tela*/
+    position: relative; /* posição = relativa, ou seja, a posição dos itens será relativa*/
+}
+.sun {
+    position: absolute; /*posição = absoluta, ou seja, está posicionado em relação ao item mais próximo*/
+    top: 15em;
+    left: 15em;
+    width: 10em;
+    height: 10em;
+    /*topo e esquerda, largura e altura, respectivamente, os dois ultimos serão proporcionais ao tamanho já definido anteriormente*/
+    background-color: yellow; /*cor de fundo (do sol) = amarelo*/
+    border-radius: 50%; /*define que o raio das linhas é de apenas metade, ou seja, um meio círculo*/
+    box-shadow: 0 0 3em white; /*"brilho" de fundo (em = proporcionalidade)*/
+}
+
+.earth,
+.moon {
+    position: absolute; /*posição = absoluta, ou seja, está posicionado em relação ao item mais próximo, nesse caso o sol*/
+    border-style: solid; /*estilo da borda = solída, basicamente uma borda normal, sem traços, pontos etc*/
+    border-color: white transparent transparent transparent; /*cor da borda = branco transparente, são as linhaz que ficam girando */
+    border-width: 0.1em 0.1em 0 0; /*lagura da borda = menos de 1 (em = proporcionalidade)*/
+    border-radius: 50%; /*define que o raio das linhas é de apenas metade, ou seja, um meio círculo*/
+}
+.earth {
+    top: 5em;
+    left: 5em;
+    width: 30em;
+    height: 30em;
+    /*Topo e esquerda, largura e altura, respectivamente, os ultimos dois serão proporcionais ao tamanho já definido anteriormente*/
+    animation: orbit 36.5s linear infinite; /*animação da órbita (da linha) = 36.5 segundos, linear e infinita (velocidade, em resumo)*/
+}
+.moon {
+    top: 0;
+    right: 0;
+    width: 8em;
+    height: 8em;
+    /*topo e direita, largura e altura, respectivamente, os dois ultimos serão proporcionais ao tamanho já definido anteriormente*/
+    animation: orbit 2.7s linear infinite; /*animação da órbita (da linha) = 26.7 segundos, linear e infinita (velocidade, em resumo)*/
+}
+.earth::before,
+.moon::before {
+    content: ""; /*serve para meio que "controlar" que a lua apareça, como um "empurrãozinho" para o programa (se tirar isso a lua some)*/
+    position: absolute; /*posição = absoluta, ou seja, está posicionado em relação ao item mais próximo, nesse caso o sol*/
+    border-radius: 50%; /*faz com que a borda seja de apenas 50%, fazendo com que se torne um círculo*/
+}
+
+.earth::before {
+    top: 2.8em;
+    right: 2.8em;
+    width: 3em;
+    height: 3em;
+    /*topo e direita, largura e altura, respectivamente, os dois ultimos serão proporcionais ao tamanho já definido anteriormente*/
+    background-color: aqua; /*cor de fundo (da terra) = um ciano ou algo assim*/
+}
+
+.moon::before {
+    top: 0.8em;
+    right: 0.2em;
+    width: 1.2em;
+    height: 1.2em;
+    /*topo e direita, largura e altura, respectivamente, os dois ultimos serão proporcionais ao tamanho já definido anteriormente*/
+    background-color: silver; /*cor de fundo (da lua) = branco*/
+}
+@keyframes orbit { /*serve para dar movimentos a objetos/elementos estáticos*/
+    to {
+        transform: rotate(360deg); /*aqui foi definido (ou transformado, tanto faz) que a rotação é de 360 graus*/
+    }
+}
