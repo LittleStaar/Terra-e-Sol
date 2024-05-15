@@ -9,5 +9,5 @@ Este repositório não se trata de um projeto, apenas uma atividade realizada em
 
 * CSS 
 
-## Autores
+## Autor
 <b>Aline Kettylen Oliveira da Silva</b>
